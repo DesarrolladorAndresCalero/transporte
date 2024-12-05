@@ -32,7 +32,6 @@ public class PedidoServiceImpl implements PedidoService {
     public List<Pedido> findAllByConductor(int id){
         List<Pedido> pedidosRespuesta = new ArrayList<>();
         List<Pedido> pedidos = pedidoRepositor.findAll();
-        System.out.println(pedidos.size());
         for(int i = 0; i < pedidos.size(); i++){
             if(pedidos.get(i).getConductor().getId()==id){
                 pedidosRespuesta.add(pedidos.get(i));

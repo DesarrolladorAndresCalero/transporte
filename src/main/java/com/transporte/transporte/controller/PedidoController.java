@@ -19,6 +19,10 @@ public class PedidoController {
     @Autowired
     private PedidoServiceImpl pedidoService;
 
+    @GetMapping
+    private ResponseEntity<List<Pedido>> getAllPedidos (){
+        return ResponseEntity.ok().body(pedidoService.findAll());
+    }
 
     @GetMapping("{id}")
     private ResponseEntity<List<Pedido>> getAllPedidosByConductor (@PathVariable("id") int id){
