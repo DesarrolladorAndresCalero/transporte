@@ -1,5 +1,6 @@
 package com.transporte.transporte.controller;
 
+import com.transporte.transporte.model.Conductor;
 import com.transporte.transporte.model.Pedido;
 import com.transporte.transporte.service.impl.PedidoServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,15 +12,18 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/pedido/")
+@RequestMapping("/pedido")
 public class PedidoController {
 
     @Autowired
     private PedidoServiceImpl pedidoService;
 
+
     @GetMapping
-    private ResponseEntity<List<Pedido>> getAllPedidos (){
-        return ResponseEntity.ok(pedidoService.findAll());
+    private ResponseEntity<List<Pedido>> getAllPedidos() {
+        List<Pedido> pedidos = pedidoService.findAll();
+        System.out.println("Conductores devueltos: " + pedidos);
+        return ResponseEntity.ok(pedidos);
     }
 
 }

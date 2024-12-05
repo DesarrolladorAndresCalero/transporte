@@ -1,5 +1,6 @@
 package com.transporte.transporte.service.impl;
 
+import com.transporte.transporte.model.Conductor;
 import com.transporte.transporte.model.Pedido;
 import com.transporte.transporte.repository.PedidoRepository;
 import com.transporte.transporte.service.PedidoService;
@@ -18,7 +19,13 @@ public class PedidoServiceImpl implements PedidoService {
 
     @Override
     public List<Pedido> findAll() {
-        return pedidoRepositor.findAll();
+        List<Pedido> pedidos = pedidoRepositor.findAll();
+        if (pedidos.isEmpty()) {
+            System.out.println("No se encontraron conductores.");
+        } else {
+            System.out.println("Conductores encontrados: " + pedidos);
+        }
+        return pedidos;
     }
 
     @Override

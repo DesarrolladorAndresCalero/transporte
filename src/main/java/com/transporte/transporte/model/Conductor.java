@@ -5,15 +5,12 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
-
 @Entity
 @Table(name="conductor")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class Conductor {
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -21,5 +18,4 @@ public class Conductor {
     private String nombre;
     private String apellido;
     private String telefono;
-
 }

@@ -18,8 +18,13 @@ public class ConductorServiceImpl implements ConductorService {
 
     @Override
     public List<Conductor> findAll() {
-        System.out.println("Entra al Service impl");
-        return conductorRepository.findAll();
+        List<Conductor> conductores = conductorRepository.findAll();
+        if (conductores.isEmpty()) {
+            System.out.println("No se encontraron conductores.");
+        } else {
+            System.out.println("Conductores encontrados: " + conductores);
+        }
+        return conductores;
     }
 
     @Override
