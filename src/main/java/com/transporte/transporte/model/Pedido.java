@@ -16,6 +16,7 @@ public class Pedido {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String tipoPedido;
+    @Column(nullable = false)
     private String direccion;
 
     @ManyToOne

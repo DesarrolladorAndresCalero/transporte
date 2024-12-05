@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-@RequestMapping("/conductor")
+@RequestMapping("/conductor/")
 public class ConductorController {
 
     @Autowired
@@ -18,6 +18,6 @@ public class ConductorController {
     @GetMapping()
     private ResponseEntity<?> getAllConductores (){
         return ResponseEntity.ok().body(conductorService.findAll());
-}
+    }
 
 }

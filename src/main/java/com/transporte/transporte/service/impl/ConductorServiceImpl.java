@@ -29,8 +29,6 @@ public class ConductorServiceImpl implements ConductorService {
 
     @Override
     public Conductor findById(Long id) {
-        System.out.println("Entra al service impl");
-        System.out.println("llamado");
         System.out.println(conductorRepository.findById(id).orElse(null));
         return conductorRepository.findById(id).orElse(null);
     }

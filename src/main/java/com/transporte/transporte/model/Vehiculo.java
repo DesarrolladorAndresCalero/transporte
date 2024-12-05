@@ -15,7 +15,9 @@ public class Vehiculo {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @Column(nullable = false)
     private String modelo;
+    @Column(nullable = false)
     private String placa;
     private String capacidad;
 

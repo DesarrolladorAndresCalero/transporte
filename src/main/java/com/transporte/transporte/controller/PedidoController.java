@@ -6,24 +6,22 @@ import com.transporte.transporte.service.impl.PedidoServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/pedido")
+@RequestMapping("/pedido/")
 public class PedidoController {
 
     @Autowired
     private PedidoServiceImpl pedidoService;
 
 
-    @GetMapping
-    private ResponseEntity<List<Pedido>> getAllPedidos() {
-        List<Pedido> pedidos = pedidoService.findAll();
-        System.out.println("Conductores devueltos: " + pedidos);
-        return ResponseEntity.ok(pedidos);
+    @GetMapping("{id}")
+    private ResponseEntity<List<Pedido>> getAllPedidosByConductor (@PathVariable("id") int id){
+        return ResponseEntity.ok().body(pedidoService.findAllByConductor(id));
     }
-
 }

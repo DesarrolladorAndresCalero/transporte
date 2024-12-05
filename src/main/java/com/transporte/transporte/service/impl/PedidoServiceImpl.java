@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -21,11 +22,23 @@ public class PedidoServiceImpl implements PedidoService {
     public List<Pedido> findAll() {
         List<Pedido> pedidos = pedidoRepositor.findAll();
         if (pedidos.isEmpty()) {
-            System.out.println("No se encontraron conductores.");
+            System.out.println("No se encontraron pedidos.");
         } else {
-            System.out.println("Conductores encontrados: " + pedidos);
+            System.out.println("pedidos encontrados: " + pedidos);
         }
         return pedidos;
+    }
+
+    public List<Pedido> findAllByConductor(int id){
+        List<Pedido> pedidosRespuesta = new ArrayList<>();
+        List<Pedido> pedidos = pedidoRepositor.findAll();
+        System.out.println(pedidos.size());
+        for(int i = 0; i < pedidos.size(); i++){
+            if(pedidos.get(i).getConductor().getId()==id){
+                pedidosRespuesta.add(pedidos.get(i));
+           }
+        }
+        return pedidosRespuesta;
     }
 
     @Override

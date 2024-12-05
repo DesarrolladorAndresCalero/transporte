@@ -14,8 +14,11 @@ public class Conductor {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+    @Column(nullable = false)
     private String identificacion;
+    @Column(nullable = false)
     private String nombre;
     private String apellido;
+    @Column(nullable = false)
     private String telefono;
 }

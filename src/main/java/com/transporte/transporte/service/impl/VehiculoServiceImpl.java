@@ -1,5 +1,6 @@
 package com.transporte.transporte.service.impl;
 
+import com.transporte.transporte.model.Conductor;
 import com.transporte.transporte.model.Vehiculo;
 import com.transporte.transporte.repository.VehiculoRepository;
 import com.transporte.transporte.service.VehiculoService;
@@ -18,7 +19,13 @@ public class VehiculoServiceImpl implements VehiculoService {
 
     @Override
     public List<Vehiculo> findAll() {
-        return vehiculoRepository.findAll();
+        List<Vehiculo> vehiculo = vehiculoRepository.findAll();
+        if (vehiculo.isEmpty()) {
+            System.out.println("No se encontraron vehiculo.");
+        } else {
+            System.out.println("vehiculo encontrados: " + vehiculo);
+        }
+        return vehiculo;
     }
 
     @Override
