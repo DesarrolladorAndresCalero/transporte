@@ -1,5 +1,6 @@
 package com.transporte.transporte.service.impl;
 
+import com.transporte.transporte.model.Conductor;
 import com.transporte.transporte.model.Vehiculo;
 import com.transporte.transporte.repository.ConductorRepository;
 import com.transporte.transporte.repository.VehiculoRepository;
