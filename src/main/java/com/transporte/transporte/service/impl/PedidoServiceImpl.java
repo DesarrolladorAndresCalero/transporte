@@ -2,6 +2,7 @@ package com.transporte.transporte.service.impl;
 
 import com.transporte.transporte.model.Conductor;
 import com.transporte.transporte.model.Pedido;
+import com.transporte.transporte.model.Vehiculo;
 import com.transporte.transporte.repository.PedidoRepository;
 import com.transporte.transporte.service.PedidoService;
 import lombok.RequiredArgsConstructor;
@@ -38,6 +39,15 @@ public class PedidoServiceImpl implements PedidoService {
            }
         }
         return pedidosRespuesta;
+    }
+
+    public void eliminarPedido(int id) {
+        Pedido pedido = pedidoRepositor.findById((long) id).orElse(null);
+        if (pedido != null) {
+            pedidoRepositor.delete(pedido);
+        } else {
+            throw new RuntimeException("pedido no encontrado");
+        }
     }
 
     @Override

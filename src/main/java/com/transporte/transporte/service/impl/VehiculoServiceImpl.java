@@ -1,12 +1,12 @@
 package com.transporte.transporte.service.impl;
 
-import com.transporte.transporte.model.Conductor;
-import com.transporte.transporte.model.Pedido;
 import com.transporte.transporte.model.Vehiculo;
+import com.transporte.transporte.repository.ConductorRepository;
 import com.transporte.transporte.repository.VehiculoRepository;
 import com.transporte.transporte.service.VehiculoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -18,6 +18,9 @@ public class VehiculoServiceImpl implements VehiculoService {
 
     @Autowired
     private VehiculoRepository vehiculoRepository;
+
+    @Autowired
+    private ConductorRepository conductorRepository;
 
     @Override
     public List<Vehiculo> findAll() {
@@ -41,6 +44,15 @@ public class VehiculoServiceImpl implements VehiculoService {
         return vehiculoRespuesta;
     }
 
+    public void eliminarVehiculo(int id) {
+        Vehiculo vehiculo = vehiculoRepository.findById((long) id).orElse(null);
+        if (vehiculo != null) {
+            vehiculoRepository.delete(vehiculo);
+        } else {
+            throw new RuntimeException("Vehículo no encontrado");
+        }
+    }
+
     @Override
     public Vehiculo findById(Long id) {
         return vehiculoRepository.findById(id).orElse(null);
@@ -60,4 +72,5 @@ public class VehiculoServiceImpl implements VehiculoService {
     public void delete(Long id) {
         vehiculoRepository.deleteById(id);
     }
+
 }
